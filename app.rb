@@ -24,7 +24,7 @@ enable :sessions
   end
 
   post '/weapon1' do
-    @game.player_1.weapon = params[:weapon1]
+    @game.player_1.select_weapon(params[:weapon1])
     p params
     redirect '/player2'
   end
@@ -37,7 +37,7 @@ enable :sessions
     if @game.player_2.is_a?(Computer)
       @game.computer
     else
-      @game.player_2.weapon = params[:weapon2]
+      @game.player_2.select_weapon(params[:weapon2])
     end
     redirect '/result'
   end
