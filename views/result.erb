@@ -1,0 +1,14 @@
+<div>
+<p><%= @game.player_1.weapon %>  </p>
+<p class="white"> vs. </p>
+<p> <%= @game.player_2.weapon %></p>
+</div>
+<div>
+<form action="/play">
+    <input class="button" type="submit" value="Play Again">
+</form>
+<form action="/">
+    <input class="button" type="submit" value="New Game">
+</form>
+</div>
+<div class="large outline"><%= @game.player_1.name @game.result %></div>

@@ -1,0 +1,15 @@
+<div>
+<p><%= @game.player_2.name %>'s turn</p>
+</div>
+<% if @game.player_2.is_a?(Computer)%>
+  <meta http-equiv="refresh" content="2;URL=/weapon2">
+<% end %>
+<form action="/result" method="post">
+  <input class="rock" type="submit" value="rock" name="weapon2">
+</form>
+<form action="/result" method="post">
+  <input class="paper" type="submit" value="paper" name="weapon2">
+</form>
+<form action="/result" method="post">
+  <input class="scissors" type="submit" value="scissors" name="weapon2">
+</form>

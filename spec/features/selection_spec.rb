@@ -11,4 +11,10 @@ feature 'Selecting' do
     expect(page).to have_content "Paper"
   end
 
+  scenario 'Scissors' do
+    sign_in
+    click_button "Paper"
+    expect(page).to have_content "Scissors"
+  end
+
 end

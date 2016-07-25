@@ -10,41 +10,41 @@ enable :sessions
   end
 
   post '/name' do
-    player = Player.new(params[:player])
-    @game = Game.create(player)
-    redirect '/play'
+    @game = Game.create(params[:player_1], params[:player_2])
+    p params
+    redirect '/player1'
   end
 
   before do
     @game = Game.instance
-
   end
 
-  get '/play' do
-    erb :play
+  get '/player1' do
+    erb :player1
   end
 
-  post '/rock' do
-    @game.rock
-    @game.computer
-    redirect '/selection'
+  post '/weapon1' do
+    @game.player_1.weapon = params[:weapon1]
+    p params
+    redirect '/player2'
   end
 
-  post '/paper' do
-    @game.paper
-    @game.computer
-    redirect '/selection'
+  get '/player2' do
+    erb :player2
   end
 
-  post '/scissors' do
-    @game.scissors
-    @game.computer
-    redirect '/selection'
+  post '/weapon2' do
+    if @game.player_2.is_a?(Computer)
+      @game.computer
+    else
+      @game.player_2.weapon = params[:weapon2]
+    end
+    redirect '/result'
   end
 
-  get '/selection' do
+  get '/result' do
     @game.result
-    erb :selection
+    erb :result
   end
 
   # start the server if ruby file executed directly
